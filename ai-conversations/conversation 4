@@ -1,0 +1,13 @@
+Me: I want to implement a natural language interface for WeatherWise. Where do I start?  
+AI: Use a simple `input()` loop to accept queries, then use keyword matching or a basic intent parser to interpret them.
+
+Me: Can I integrate GPT for the interface?  
+AI: If allowed in your assignment, yes. Otherwise, simulate basic prompts like:  
+- “What’s the weather like in Perth?” → `get_weather("Perth")`  
+- “Show temperature chart” → `plot_temperature()`
+
+Me: How do I test if it understands multiple inputs?  
+AI: Create a test file with sample inputs and expected intents. Simulate user interaction in a function like `simulate_conversation()`.
+
+Me: Should the interface be in main.py?  
+AI: Yes, typically the interface lives in `main.py`, where it interacts with other modules.
