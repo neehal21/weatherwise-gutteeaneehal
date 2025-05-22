@@ -1,0 +1,18 @@
+Me: My visualisation is showing empty plots. What could be wrong?
+AI: First, check if your data lists (e.g. x and y) are populated. Try printing them before plotting.
+
+Me: Ah, my temperature list was empty.
+AI: That means the API response may be missing data or your parsing failed. Add logging to confirm.
+
+Me: How do I add logging?
+AI: Use Python’s built-in logging module:
+
+python
+Copy
+Edit
+import logging  
+logging.basicConfig(level=logging.INFO)  
+logging.info("Temp data: %s", temps)
+yaml
+Copy
+Edit
