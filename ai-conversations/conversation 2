@@ -1,0 +1,18 @@
+Me: How do I parse temperature from this weather JSON?  
+AI: You can use `weather["current_condition"][0]["temp_C"]` to get the temperature.
+
+Me: What if it’s missing?  
+AI: Add error handling using `try/except` or check with `if "temp_C" in weather["current_condition"][0]`.
+
+Me: Thanks, now I want to visualise it using matplotlib.  
+AI: Sure, you can use `plt.plot()` after extracting temperatures over multiple days. For example:
+
+```python
+import matplotlib.pyplot as plt  
+days = ["Mon", "Tue", "Wed"]  
+temps = [22, 24, 21]  
+plt.plot(days, temps)  
+plt.xlabel("Day")  
+plt.ylabel("Temperature (°C)")  
+plt.title("3-Day Forecast")  
+plt.show()
