@@ -1,0 +1,15 @@
+Me: How can I structure my WeatherWise app into modules?  
+AI: Break it into functional files:  
+- `weather_fetcher.py` for API calls  
+- `data_parser.py` for JSON handling  
+- `visualiser.py` for charts  
+- `main.py` to integrate everything
+
+Me: Should I pass data between modules as raw JSON?  
+AI: Better to parse what you need first, then pass structured data like dictionaries or lists.
+
+Me: Got it. Any naming tips?  
+AI: Keep functions descriptive. For example:  
+- `fetch_weather_data()`  
+- `extract_temperature_series()`  
+- `plot_temperature_trend()`
