@@ -1,15 +1,18 @@
-Me: How can I structure my WeatherWise app into modules?  
-AI: Break it into functional files:  
-- `weather_fetcher.py` for API calls  
-- `data_parser.py` for JSON handling  
-- `visualiser.py` for charts  
-- `main.py` to integrate everything
+Me: I want to parse a natural language question like "What will the temperature be in Sydney tomorrow?" How do I extract location and time?
+AI: You can use regex or NLP libraries like spaCy. A simple approach is keyword matching.
 
-Me: Should I pass data between modules as raw JSON?  
-AI: Better to parse what you need first, then pass structured data like dictionaries or lists.
+Me: Can you sketch a basic function for this?
+AI: Sure, here’s a simple example:
 
-Me: Got it. Any naming tips?  
-AI: Keep functions descriptive. For example:  
-- `fetch_weather_data()`  
-- `extract_temperature_series()`  
-- `plot_temperature_trend()`
+
+def parse_weather_question(question):
+    locations = ["Sydney", "Melbourne", "Brisbane"]
+    for loc in locations:
+        if loc.lower() in question.lower():
+            location = loc
+            break
+    if "tomorrow" in question.lower():
+        day = 1
+    else:
+        day = 0
+    return {"location": location, "day_offset": day}
