@@ -4,9 +4,6 @@ AI: Extract the dates and temperature data, then use plt.plot(dates, temps) with
 Me: Can you help me write a function that creates this plot?
 AI: Sure:
 
-python
-Copy
-Edit
 import matplotlib.pyplot as plt
 
 def create_temperature_visualisation(weather_data):
