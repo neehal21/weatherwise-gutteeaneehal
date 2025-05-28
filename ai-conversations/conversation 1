@@ -1,13 +1,12 @@
-Me: How do I parse temperature from this weather JSON?
-AI: You can use `weather["current_condition"][0]["temp_C"]` to get the temperature.
+Me: How do I retrieve weather data for a given location in Python?
+AI: You can use the `fetch-my-weather` package with `get_weather(location)` to get current weather and forecasts.
 
-Me: What if it’s missing?
-AI: Add error handling using `try/except`...
+Me: Can you show me a function that takes location and days as input and returns the weather data?
+AI: Sure! Here’s a simple function:
 
-(continue until the conversation ends)
+```python
+from fetch_my_weather import get_weather
 
-📌 No special formatting required.
-Just copy the entire conversation text and paste it here.
-
-⚠️ Warning:
-Use the `.txt` format, **not screenshots or PDFs**. AI logs should be searchable and lightweight.
+def get_weather_data(location, forecast_days=5):
+    weather = get_weather(location)
+    return weather["forecast"][:forecast_days]
