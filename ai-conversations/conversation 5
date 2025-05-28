@@ -1,18 +1,58 @@
-Me: My visualisation is showing empty plots. What could be wrong?
-AI: First, check if your data lists (e.g. x and y) are populated. Try printing them before plotting.
 
-Me: Ah, my temperature list was empty.
-AI: That means the API response may be missing data or your parsing failed. Add logging to confirm.
+Me: How can I visualise weather forecast data in Python using matplotlib?  
+AI: You can use `matplotlib.pyplot` to plot data like temperature trends over multiple days. For example:
 
-Me: How do I add logging?
-AI: Use Python’s built-in logging module:
+```python
+import matplotlib.pyplot as plt
 
-python
-Copy
-Edit
-import logging  
-logging.basicConfig(level=logging.INFO)  
-logging.info("Temp data: %s", temps)
-yaml
-Copy
-Edit
+def plot_temperature_forecast(forecast):
+    dates = [day["date"] for day in forecast]
+    max_temps = [day["max_temp"] for day in forecast]
+    min_temps = [day["min_temp"] for day in forecast]
+
+    plt.figure(figsize=(10, 5))
+    plt.plot(dates, max_temps, label="Max Temp", marker="o")
+    plt.plot(dates, min_temps, label="Min Temp", marker="o")
+    plt.title("Temperature Forecast")
+    plt.xlabel("Date")
+    plt.ylabel("Temperature (°C)")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+
+Me: That’s great! How do I integrate this with my existing weather function?
+AI: You can call plot_temperature_forecast() and pass in the forecast list from your weather data like this:
+
+weather = get_weather_data("Perth", forecast_days=3)
+if weather:
+    plot_temperature_forecast(weather["forecast"])
+Me: Can I also add precipitation as a bar chart?
+AI: Yes, you can use a secondary y-axis to add precipitation:
+
+def plot_weather_with_precip(forecast):
+    import matplotlib.pyplot as plt
+
+    dates = [day["date"] for day in forecast]
+    max_temps = [day["max_temp"] for day in forecast]
+    min_temps = [day["min_temp"] for day in forecast]
+    precip = [day["precipitation"]["amount"] for day in forecast]
+
+    fig, ax1 = plt.subplots(figsize=(10, 5))
+
+    ax1.plot(dates, max_temps, label="Max Temp", color="red", marker="o")
+    ax1.plot(dates, min_temps, label="Min Temp", color="blue", marker="o")
+    ax1.set_xlabel("Date")
+    ax1.set_ylabel("Temperature (°C)")
+    ax1.tick_params(axis='y')
+
+    ax2 = ax1.twinx()
+    ax2.bar(dates, precip, color='skyblue', alpha=0.6, label="Precipitation (mm)")
+    ax2.set_ylabel("Precipitation (mm)")
+
+    fig.tight_layout()
+    ax1.legend(loc="upper left")
+    ax2.legend(loc="upper right")
+    plt.title("Weather Forecast with Precipitation")
+    plt.show()
+
