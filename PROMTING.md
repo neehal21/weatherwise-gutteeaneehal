@@ -34,8 +34,10 @@ AI: Sure! Here’s a simple function:
 
 from fetch_my_weather import get_weather
 def get_weather_data(location, forecast_days=5):
+
     weather = get_weather(location)
-    return weather["forecast"][:forecast_days]
+    return weather["forecast"]
+    [:forecast_days]
     
 Conversation 2:
 
@@ -47,9 +49,13 @@ AI: Sure:
 
 
 import matplotlib.pyplot as plt
+
 def create_temperature_visualisation(weather_data):
+
     dates = [day['date'] for day in weather_data]
+    
     temps = [day['avgtempC'] for day in weather_data]
+    
     plt.plot(dates, temps)
     plt.title('Temperature Trend')
     plt.xlabel('Date')
@@ -67,7 +73,9 @@ AI: Sure, here’s a simple example:
 
 
 def parse_weather_question(question):
+
     locations = ["Sydney", "Melbourne", "Brisbane"]
+    
     for loc in locations:
         if loc.lower() in question.lower():
             location = loc
@@ -88,6 +96,7 @@ Me: Can you show me an example?
 AI: Sure:
 
 def generate_weather_response(parsed_question, weather_data):
+
     location = parsed_question.get("location")
     day_offset = parsed_question.get("day_offset", 0)
     forecast = weather_data[day_offset]
@@ -123,7 +132,9 @@ AI: You can call plot_temperature_forecast() and pass in the forecast list from 
 
 weather = get_weather_data("Perth", forecast_days=3)
 if weather:
+
     plot_temperature_forecast(weather["forecast"])
+    
 Me: Can I also add precipitation as a bar chart?
 AI: Yes, you can use a secondary y-axis to add precipitation:
 
